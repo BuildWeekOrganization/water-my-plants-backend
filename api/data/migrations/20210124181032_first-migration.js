@@ -14,12 +14,12 @@ exports.up = async (knex) => {
       plants.string('species', 200).notNullable()
       plants.integer('h2o_frequency').notNullable()
       plants.string('image', 500)
-    //   plants.integer('user_id')
-    //     .unsigned()
-    //     .notNullable()
-    //     .references('user_id').inTable('users')
-    //     .onDelete('RESTRICT')
-    //     .onUpdate('RESTRICT')
+      plants.integer('user_id')
+        .unsigned()
+        .notNullable()
+        .references('user_id').inTable('users')
+        .onDelete('RESTRICT')
+        .onUpdate('RESTRICT')
     })
 }
 

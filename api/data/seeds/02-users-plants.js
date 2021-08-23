@@ -17,20 +17,20 @@ const plants = [
     species: 'Rosa',
     h2o_frequency: 3,
     image: 'https://www.gardeningknowhow.com/wp-content/uploads/2019/11/red-rose.jpg',
-    // user_id: ,
+    user_id: 1,
   },
   {
     nickname: 'White Moth Orchid',
     species: 'Orchidaceae',
     h2o_frequency: 7,
-    // user_id: ,
+    user_id: 1,
   },
   {
     nickname: 'Sunflower',
     species: 'Helianthus',
     h2o_frequency: 7,
     image: 'https://upload.wikimedia.org/wikipedia/commons/thumb/4/40/Sunflower_sky_backdrop.jpg/1200px-Sunflower_sky_backdrop.jpg',
-    // user_id: ,
+    user_id: 2,
   },
 ]
 
