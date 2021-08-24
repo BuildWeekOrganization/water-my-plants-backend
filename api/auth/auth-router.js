@@ -6,6 +6,7 @@ const {
   checkLoginBody,
   checkUserUnique,
   checkUserExists,
+  checkIDExists,
   restricted,
   only,
   buildToken,
@@ -34,6 +35,25 @@ router.post('/login', checkLoginBody, checkUserExists, (req, res, next) => {
   } else {
     next({ status: 401, message: 'invalid credentials' })
   }
+})
+
+// admin ONLY - must login as admin to GET users
+router.get('/users', restricted, only('admin'), (req, res, next) => {
+  User.find()
+    .then(users => {
+      res.status(200).json(users)
+    })
+    .catch(next)
+})
+
+router.get('/users/:user_id', restricted, only('admin'), checkIDExists, (req, res, next) => {
+  const { user_id } = req.params
+
+  User.findBy({ user_id })
+    .then(user => {
+      res.status(200).json(user)
+    })
+    .catch(next)
 })
 
 module.exports = router

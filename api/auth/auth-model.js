@@ -18,6 +18,7 @@ async function insertUser(user) {
 }
 
 module.exports = {
+  find,
   findBy,
   insertUser,
 }

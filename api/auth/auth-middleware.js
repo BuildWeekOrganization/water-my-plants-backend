@@ -100,6 +100,17 @@ const checkUserExists = async (req, res, next) => {
   }
 }
 
+const checkIDExists = async (req, res, next) => {
+  const { user_id } = req.params
+  const existing = await findBy({ user_id })
+
+  if (!existing) {
+    next({ status: 404, message: `user with user_id ${user_id} not found` })
+  } else {
+    next()
+  }
+}
+
 const buildToken = (user) => {
   const payload = {
     subject: user.user_id,
@@ -118,5 +129,6 @@ module.exports = {
   checkLoginBody,
   checkUserUnique,
   checkUserExists,
+  checkIDExists,
   buildToken
 }
