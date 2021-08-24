@@ -20,6 +20,14 @@ const restricted = (req, res, next) => {
   })
 }
 
+const only = username => (req, res, next) => {
+  if (username === req.decodedToken.username) {
+    next()
+  } else {
+    next({ status: 403, message: 'access denied' })
+  }
+}
+
 const checkUserBody = (req, res, next) => {
   const { username, password, phone_num } = req.body
 
@@ -84,6 +92,7 @@ const checkUserExists = async (req, res, next) => {
 
 module.exports = {
   restricted,
+  only,
   checkUserBody,
   checkUserUnique,
   checkUserExists,
