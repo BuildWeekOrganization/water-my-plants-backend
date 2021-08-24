@@ -5,10 +5,10 @@ https://watermyplants-02.herokuapp.com
 
 ## Endpoints
 
-[[POST] /api/auth/register](#one)
-[[POST] /api/auth/login](#two)
-[[GET] /api/auth/users](#three)
-[[GET] /api/auth/users/:user_id](#four)
+[[POST] /api/auth/register](#one)<br>
+[[POST] /api/auth/login](#two)<br>
+[[GET] /api/auth/users](#three)<br>
+[[GET] /api/auth/users/:user_id](#four)<br>
 
 ### /api/auth Endpoints
 <a name='one'>Register User</a>
