@@ -12,13 +12,13 @@ const {
   buildToken,
 } = require('./auth-middleware')
 
-const User = require('./auth-model')
+const Auth = require('./auth-model')
 
 router.post('/register', checkUserBody, checkUserUnique, (req, res, next) => {
   const { username, password, phone_num } = req.body
   const hash = bcrypt.hashSync(password, 8)
 
-  User.insertUser({ username, password: hash, phone_num })
+  Auth.insertUser({ username, password: hash, phone_num })
     .then(newUser => {
       res.status(201).json(newUser)
     })
@@ -39,7 +39,7 @@ router.post('/login', checkLoginBody, checkUserExists, (req, res, next) => {
 
 // admin ONLY - must login as admin to GET users
 router.get('/users', restricted, only('admin'), (req, res, next) => {
-  User.find()
+  Auth.find()
     .then(users => {
       res.status(200).json(users)
     })
@@ -49,7 +49,7 @@ router.get('/users', restricted, only('admin'), (req, res, next) => {
 router.get('/users/:user_id', restricted, only('admin'), checkIDExists, (req, res, next) => {
   const { user_id } = req.params
 
-  User.findBy({ user_id })
+  Auth.findBy({ user_id })
     .then(user => {
       res.status(200).json(user)
     })
