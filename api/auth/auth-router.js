@@ -1,16 +1,15 @@
 const router = require('express').Router()
+const bcrypt = require('bcryptjs')
 
 const {
   checkUserBody,
+  checkLoginBody,
   checkUserUnique,
   checkUserExists,
   restricted,
-  only
+  only,
+  buildToken,
 } = require('./auth-middleware')
-
-const bcrypt = require('bcryptjs')
-const jwt = require('jsonwebtoken')
-const { JWT_SECRET } = require('./secret')
 
 const User = require('./auth-model')
 
@@ -23,6 +22,18 @@ router.post('/register', checkUserBody, checkUserUnique, (req, res, next) => {
       res.status(201).json(newUser)
     })
     .catch(next)
+})
+
+router.post('/login', checkLoginBody, checkUserExists, (req, res, next) => {
+  if (bcrypt.compareSync(req.body.password, req.user.password)) {
+    const token = buildToken(req.user)
+    res.status(200).json({
+      message: `welcome, ${req.user.username}`,
+      token,
+    })
+  } else {
+    next({ status: 401, message: 'invalid credentials' })
+  }
 })
 
 module.exports = router

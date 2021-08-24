@@ -67,6 +67,16 @@ const checkUserBody = (req, res, next) => {
   }
 }
 
+const checkLoginBody = (req, res, next) => {
+  const { username, password } = req.body
+
+  if (!username || !password) {
+    next({ status: 422, message: 'username and password required' })
+  } else {
+    next()
+  }
+}
+
 const checkUserUnique = async (req, res, next) => {
   const { username } = req.body
   const existing = await findBy({ username })
@@ -90,10 +100,23 @@ const checkUserExists = async (req, res, next) => {
   }
 }
 
+const buildToken = (user) => {
+  const payload = {
+    subject: user.user_id,
+    username: user.username,
+  }
+  const options = {
+    expiresIn: '1d',
+  }
+  return jwt.sign(payload, JWT_SECRET, options)
+}
+
 module.exports = {
   restricted,
   only,
   checkUserBody,
+  checkLoginBody,
   checkUserUnique,
   checkUserExists,
+  buildToken
 }

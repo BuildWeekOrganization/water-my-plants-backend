@@ -1,7 +1,7 @@
 const users = [
   {
     username: 'admin',
-    password: 'admin',
+    password: '$2a$08$C0cPFWWn5qyvP7oyqFmvr.e9iPwfxvXSDWUSNwWtIpgLUzmzHTy7u',
     phone_num: '111-111-1111'
   },
   {
