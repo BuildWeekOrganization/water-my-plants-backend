@@ -17,6 +17,12 @@ https://watermyplants-02.herokuapp.com/
 [[PUT] /api/users/:user_id/updatepass](#nine)<br>
 [[DELETE] /api/users/:user_id](#ten)<br>
 
+[[GET] /api/plants](#eleven)<br>
+[[GET] /api/plants/:plant_id](#twelve)<br>
+[[POST] /api/plants](#thirteen)<br>
+[[PUT] /api/plants/:plant_id](#fourteen)<br>
+[[DELETE] /api/plants/:plant_id](#fifteen)<br>
+
 ### /api/auth Endpoints
 <a name='one'>Register User</a>
 ```
