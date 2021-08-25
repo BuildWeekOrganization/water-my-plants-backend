@@ -6,19 +6,12 @@ const users = [
   },
   {
     username: 'matt',
-    password: '1234',
+    password: '$2a$08$2RQslbhtstf6Sc8/fXDNXer0beNwrxpMS2Wj9786Sr4k0jEmcIBke',
     phone_num: '222-222-2222'
   },
 ]
 
 const plants = [
-  {
-    nickname: 'Common Red Rose',
-    species: 'Rosa',
-    h2o_frequency: 3,
-    image: 'https://www.gardeningknowhow.com/wp-content/uploads/2019/11/red-rose.jpg',
-    user_id: 1,
-  },
   {
     nickname: 'White Moth Orchid',
     species: 'Orchidaceae',
@@ -30,6 +23,13 @@ const plants = [
     species: 'Helianthus',
     h2o_frequency: 7,
     image: 'https://upload.wikimedia.org/wikipedia/commons/thumb/4/40/Sunflower_sky_backdrop.jpg/1200px-Sunflower_sky_backdrop.jpg',
+    user_id: 1,
+  },
+  {
+    nickname: 'Common Red Rose',
+    species: 'Rosa',
+    h2o_frequency: 3,
+    image: 'https://www.gardeningknowhow.com/wp-content/uploads/2019/11/red-rose.jpg',
     user_id: 2,
   },
 ]
