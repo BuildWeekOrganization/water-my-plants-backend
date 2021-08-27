@@ -55,6 +55,7 @@ https://watermyplants-02.herokuapp.com/
 }
 // response
 {
+  "user_id": 3,
   "message": "welcome, foo",
   "token": // TOKEN ASSIGNED TO USER HERE
 }
